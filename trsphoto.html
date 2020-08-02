@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+ <!--前端上传照片，后端接收的测试网页-->
+                    <section id="content1" class="inner-w3layouts-wrap">
+                        <h3 class="head-w3ls">上传图片</h3>
+
+                           <input id="upload_input" class="admin img-fluid" type="file"  onchange="changePicture(this)">
+                            <img id="up_img" src="static/images/up2.png" style="width:30%;height: 30%" alt="mobile-image">
+
+
+                        <h4 style="height: 20px"><button onclick="confirm_up()">确定上传</button></h4>
+                        <h2>uploading...</h2>
+                        <h3 id="up_success" style="height: 20px;"></h3>
+
+                    </section>
+
+
+                     <!--第二部分-->
+                    <section id="content2" class="inner-w3layouts-wrap">
+                        <h3 class="head-w3ls">展示图片</h3>
+
+                          <img src="static/images/banner1.jpg" alt="news image" id="show_img" >
+                        <dir style="height: 100px"></dir>
+                        <h3 class="head-w3ls">获得的信息</h3>
+                        <p>运行时间：10 秒  详细情况：Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis mollis arcu, vel vulputate justo consectetur quis. Donec quis fringilla arcu lorem ipsum dolor sit amet nullam. Consequat adipiscing phasellus.</p>
+
+                    </section>
+
+<!-- js -->
+
+  <script type="text/javascript">
+     function changePicture() {
+            var readfile=new FileReader();
+            var f=document.getElementById('upload_input').files[0];
+            readfile.readAsDataURL(f);
+            readfile.onload=function (e) {
+                document.getElementById('up_img').src=this.result;
+            }
+        }
+    function confirm_up() {
+            var formData=new FormData();
+            var f=document.getElementById('upload_input').files[0];
+            formData.append('img',f)
+            $.ajax({
+                url:"{{ url_for('upload_img') }}",
+                data:formData,
+                cache:false,
+                processData:false,
+                contentType:false,
+                type:'POST',
+                success:function (data) {
+                    if(data.signal==1){
+                        document.getElementById('up_success').innerHTML='<h3 id="up_success" style="height: 20px;color: darkgreen">上传成功</h3>'
+                        document.getElementById('show_img').src=data.img_path
+
+                    }
+
+                }
+            })
+
+        }
+    </script>
+
+
+
+</body>
+</html>

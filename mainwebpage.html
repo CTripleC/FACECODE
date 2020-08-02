@@ -1,0 +1,240 @@
+<html>
+<head>
+        <meta charset="utf-8">
+    <title>Facecode-让您更了解顾客</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta http-equiv='Content-Type' content='text/html; charset=gb2312'>
+    <style>
+{# 设置各区域背景色，阴影等       #}
+    body{ background-color: skyblue}
+    </style>
+        <style>.logoarea{ background-color: white}
+            .container{background-color: white}
+             .container{box-shadow: -2px 0 0 lightgrey,  0 -2px 0 lightgrey ,  0 2px 0 lightgrey,  2px 0 0 lightgrey}
+    </style>
+            <style>.logoarea{ font-family: "Brush Script Std"}
+    </style>
+
+        <style type="text/css">
+            body {
+                padding: 0;
+                margin: 0 auto;
+            }
+            #footer {
+                height: 40px;
+                line-height: 40px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                background: #333;
+                color: #fff;
+                font-family: Arial;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+            .content {
+                height: 1800px;
+                width: 100%;
+                text-align: center;
+            }
+        </style>
+
+
+</head>
+<body>
+<div
+class="logoarea"><img src="images/1.jpg" width="60" height="60"/>
+<u1>FACECODE</u1>
+</div>
+ <!--导航栏-->
+<nav class="navbar navbar-inverse" role="navigation">
+	<div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Facecode</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a data-toggle="tab" href="#home" >首页</a></li>
+
+            <li><a href="#qunti"data-toggle="tab">群体分析</a></li>
+            <li><a href="#list"data-toggle="tab">顾客列表</a></li>
+            <li><a href="#check"data-toggle="tab">查看摄像头</a></li>
+            <li class="dropdown">
+                <a href="#boss" class="dropdown-toggle" data-toggle="dropdown">
+                    店主主页 <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#myshops"data-toggle="tab">绑定店铺</a></li>
+                    <li><a href="#manage"data-toggle="tab">员工管理</a></li>
+                    <li><a href="#shequ"data-toggle="tab">商家圈子</a></li>
+
+            </li>
+        </ul>
+                    </ul>
+    </div>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-2 column">
+		</div>
+		<div class="col-md-8 column">
+		</div>
+		<div class="col-md-2 column">
+		</div>
+	</div>
+<!--首页包含的标签-->
+<div class="tab-content">
+		<div class="tab-pane active" id="home">
+			<p><ul id="myTab" class="nav nav-tabs">
+	<li class="active">
+		<a href="#mention" data-toggle="tab">
+			 进店提示</a>
+    </li>
+	<li><a href="#sell" data-toggle="tab">销售概况</a>
+    </li>
+        </ul>
+             </p>
+
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="mention">
+		<p>这里顾客进店的提示浮窗</p>
+	</div>
+	<div class="tab-pane fade" id="sell">
+		<p>
+        <!--下拉日历-->
+        <form name="reg_testdate">
+  <select name="YYYY" onchange="YYYYDD(this.value)">
+    <option value="">请选择 年</option>
+  </select>
+  <select name="MM" onchange="MMDD(this.value)">
+    <option value="">选择 月</option>
+  </select>
+  <select name="DD">
+    <option value="">选择 日</option>
+  </select>
+</form>
+<!--js写的日历-->
+<script language="JavaScript"><!--
+   function YYYYMMDDstart()
+   {
+           MonHead = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+           //先给年下拉框赋内容
+           var y  = new Date().getFullYear();
+           for (var i = (y-30); i < (y+30); i++) //以今年为准，前30年，后30年
+                   document.reg_testdate.YYYY.options.add(new Option(" "+ i +" 年", i));
+
+           //赋月份的下拉框
+           for (var i = 1; i < 13; i++)
+                   document.reg_testdate.MM.options.add(new Option(" " + i + " 月", i));
+
+           document.reg_testdate.YYYY.value = y;
+           document.reg_testdate.MM.value = new Date().getMonth() + 1;
+           var n = MonHead[new Date().getMonth()];
+           if (new Date().getMonth() ==1 && IsPinYear(YYYYvalue)) n++;
+                writeDay(n); //赋日期下拉框Author:meizz
+           document.reg_testdate.DD.value = new Date().getDate();
+   }
+   if(document.attachEvent)
+       window.attachEvent("onload", YYYYMMDDstart);
+   else
+       window.addEventListener('load', YYYYMMDDstart, false);
+   function YYYYDD(str) //年发生变化时日期发生变化(主要是判断闰平年)
+   {
+           var MMvalue = document.reg_testdate.MM.options[document.reg_testdate.MM.selectedIndex].value;
+           if (MMvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}
+           var n = MonHead[MMvalue - 1];
+           if (MMvalue ==2 && IsPinYear(str)) n++;
+                writeDay(n)
+   }
+   function MMDD(str)   //月发生变化时日期联动
+   {
+        var YYYYvalue = document.reg_testdate.YYYY.options[document.reg_testdate.YYYY.selectedIndex].value;
+        if (YYYYvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}
+        var n = MonHead[str - 1];
+        if (str ==2 && IsPinYear(YYYYvalue)) n++;
+       writeDay(n)
+   }
+   function writeDay(n)   //据条件写日期的下拉框
+   {
+           var e = document.reg_testdate.DD; optionsClear(e);
+           for (var i=1; i<(n+1); i++)
+                e.options.add(new Option(" "+ i + " 日", i));
+   }
+   function IsPinYear(year)//判断是否闰平年
+   {     return(0 == year%4 && (year%100 !=0 || year%400 == 0));}
+   function optionsClear(e)
+   {
+        e.options.length = 1;
+   }
+   //--></script>
+        </p>
+	</div>
+
+</div>
+
+
+		</div>
+		<div class="tab-pane fade in active" id="qunti">
+			<p> 顾客的总体行为，购买偏好分析 </p>
+		</div>
+		<div class="tab-pane fade in active" id="list">
+			<p>这里放顾客列表+精细肖像</p>
+		</div>
+		<div class="tab-pane fade in active" id="check">
+			<p>查看店内多个摄像头</p>
+		</div>
+
+    <div class="tab-pane fade in active" id="myshops">
+			<p>这里绑定/解绑商店</p>
+        </div>
+
+<!--录入员工信息，上传照片界面-->
+        <div class="tab-pane fade in active" id="manage">
+			<p><div class="container1">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<form role="form">
+				<div class="form-group">
+					 <label for="exampleInputname1">员工名字</label><input type="name1" class="form-control" id="exampleInputname1" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputpost1">员工职务</label><input type="post1" class="form-control" id="exampleInputpost1" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputFile">上传员工证件照</label><input type="file" id="exampleInputFile" />
+				</div>
+                <button type="submit" class="btn btn-default"onclick="returnhome()">录入</button>
+			</form>
+		</div>
+	</div>
+</div>
+</p>
+            <script>         //录入员工信息，跳转回首页
+                function returnhome(){
+                    window.location.href="#home"
+}
+            </script>
+
+
+            </div>
+            <div class="tab-pane fade in active" id="shequ">
+			<p>这里是商家分享数据的区域</p>
+	</div>
+</div>
+
+</div>
+
+      <div id="footer">联系邮箱：can_xu@bjfu.edu.cn   联系地址：北京林业大学
+      </div>
+
+</body>
+
+
+</html>
