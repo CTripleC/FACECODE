@@ -8,7 +8,12 @@
 
     <meta http-equiv='Content-Type' content='text/html; charset=gb2312'>
     <style>
-{# 设置各区域背景色，阴影等       #}
+     
+
+
+
+
+     
     body{ background-color: skyblue}
     </style>
         <style>.logoarea{ background-color: white}
@@ -56,13 +61,14 @@ class="logoarea"><img src="images/1.jpg" width="60" height="60"/>
     <div class="navbar-header">
         <a class="navbar-brand" href="#">Facecode</a>
     </div>
-    <div>
+    <div class="top">
         <ul class="nav navbar-nav">
-            <li class="active"><a data-toggle="tab" href="#home" >首页</a></li>
+            <li class="active">
+                <li><a data-toggle="tab" href="#home" >首页</a></li>
 
             <li><a href="#qunti"data-toggle="tab">群体分析</a></li>
             <li><a href="#list"data-toggle="tab">顾客列表</a></li>
-            <li><a href="#check"data-toggle="tab">查看摄像头</a></li>
+            <li><a href="camera.html">查看摄像头</a></li>
             <li class="dropdown">
                 <a href="#boss" class="dropdown-toggle" data-toggle="dropdown">
                     店主主页 <b class="caret"></b>
@@ -71,12 +77,16 @@ class="logoarea"><img src="images/1.jpg" width="60" height="60"/>
                     <li><a href="#myshops"data-toggle="tab">绑定店铺</a></li>
                     <li><a href="#manage"data-toggle="tab">员工管理</a></li>
                     <li><a href="#shequ"data-toggle="tab">商家圈子</a></li>
-
-            </li>
+            
+            
         </ul>
+            </li>
+        <li><a href="login.html">退出登录</a></li>
+   
+
                     </ul>
     </div>
-	</div>
+	
 </nav>
 
 <div class="container">
@@ -187,9 +197,7 @@ class="logoarea"><img src="images/1.jpg" width="60" height="60"/>
 		<div class="tab-pane fade in active" id="list">
 			<p>这里放顾客列表+精细肖像</p>
 		</div>
-		<div class="tab-pane fade in active" id="check">
-			<p>查看店内多个摄像头</p>
-		</div>
+	
 
     <div class="tab-pane fade in active" id="myshops">
 			<p>这里绑定/解绑商店</p>
